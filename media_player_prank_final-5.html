@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Video.mp4</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#000;color:#fff;font-family:Arial,Helvetica,sans-serif}
+body{display:flex;justify-content:center}
+.page{width:100%;max-width:720px;min-height:100vh;background:#050505}
+.header{height:58px;background:#101010;display:flex;align-items:center;padding:0 16px;gap:14px;font-size:20px}
+.back{font-size:31px;line-height:1}.file{flex:1}.hicon{font-size:20px}
+.video{
+ width:100%;
+ aspect-ratio:16/9;
+ background:#050505;
+ position:relative;
+ overflow:hidden;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+}
+.play{
+ width:78px;height:78px;border-radius:50%;
+ border:1px solid #777;background:#151515;color:white;
+ font-size:31px;padding-left:7px;cursor:pointer;
+ box-shadow:0 3px 15px #000;
+}
+.controls{
+ position:absolute;left:0;right:0;bottom:0;
+ padding:38px 16px 12px;
+ background:linear-gradient(transparent,rgba(0,0,0,.95));
+}
+.progress{height:4px;background:#555;border-radius:5px;margin-bottom:11px}
+.progress:before{content:"";display:block;width:2px;height:100%;background:#eee}
+.row{display:flex;align-items:center;gap:17px;font-size:18px}
+.time{font-size:14px;white-space:nowrap}.grow{flex:1}
+.error{
+ display:none;position:absolute;inset:0;background:#050505;
+ align-items:center;justify-content:center;text-align:center;padding:20px;
+}
+.errorbox{width:100%;max-width:650px}
+.warning{
+ width:62px;height:62px;border:3px solid #ff4655;border-radius:50%;
+ display:flex;align-items:center;justify-content:center;
+ color:#ff4655;font-size:36px;font-weight:bold;margin:0 auto 14px;
+}
+.error h1{
+ font-size:clamp(20px,4.5vw,32px);line-height:1.25;
+ font-weight:400;margin:0 auto 13px;max-width:590px;
+}
+.error p{
+ font-size:clamp(13px,3vw,17px);line-height:1.55;
+ color:#aaa;margin:0 auto;max-width:520px;
+}
+.ok{
+ margin-top:19px;padding:9px 30px;border:1px solid #888;
+ border-radius:5px;background:transparent;color:#fff;font-size:15px;
+}
+.note{text-align:center;color:#555;font-size:11px;padding:14px}
+</style>
+</head>
+<body>
+<div class="page">
+
+
+ <div class="header">
+  <span class="back">‹</span><span class="file">Video.mp4</span>
+  <span class="hicon">◧</span><span class="hicon">⋮</span>
+ </div>
+
+ <div class="video">
+  <button class="play" id="play" aria-label="Play">▶</button>
+
+  <div class="controls" id="controls">
+   <div class="progress"></div>
+   <div class="row">
+    <span>▶</span><span>🔊</span>
+    <span class="time">0:00 / 5:27</span>
+    <span class="grow"></span><span>⚙</span><span>⛶</span>
+   </div>
+  </div>
+
+  <div class="error" id="error">
+   <div class="errorbox">
+    <div class="warning">!</div>
+    <h1>This video has been deleted by community violence.</h1>
+    <p>This video is no longer available due to a violation<br>of our community guidelines.</p>
+    <button class="ok" onclick="location.reload()">OK</button>
+   </div>
+  </div>
+ </div>
+ <div class="note">Video player</div>
+</div>
+
+<script>
+document.getElementById("play").onclick=function(){
+ document.getElementById("play").style.display="none";
+ document.getElementById("controls").style.display="none";
+ document.getElementById("error").style.display="flex";
+};
+</script>
+</body>
+</html>
